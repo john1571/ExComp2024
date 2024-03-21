@@ -9,7 +9,7 @@
     <h3>Distance: {{ $workout->distance }}</h3>
     <h3>Points: {{ $workout->points }}</h3>
     <h3>Date: {{ $workout->date }}</h3>
-    <h3>User: {{ $workout->user->name }}</h3>
+    <h3>User: <a href="\user">{{ $workout->user->name }}</a></h3>
     @endforeach
 </body>
 </html>

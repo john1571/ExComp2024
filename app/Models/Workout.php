@@ -13,4 +13,15 @@ class Workout extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    protected $fillable = [
+        'user_id',
+        'type',
+        'reps',
+        'distance',
+        'duration',
+        'kids',
+        'points',
+        'date'
+        ];
 }
