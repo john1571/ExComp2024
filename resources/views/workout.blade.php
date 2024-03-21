@@ -4,6 +4,7 @@
     <title>ExComp2024 Workout</title>
 </head>
 <body>
+    <a href="\new_workout">Enter New Workout</a>
     @foreach($workouts as $workout)
     <h3>Type: {{ $workout->type }}</h3>
     <h3>Distance: {{ $workout->distance }}</h3>
