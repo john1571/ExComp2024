@@ -16,6 +16,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Workout::class);
     }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -50,4 +55,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
 }
