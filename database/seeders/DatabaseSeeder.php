@@ -16,9 +16,8 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $test_user = new User;
         $test_user->name =  'Test User';
-        $test_user->email =  'test@example.com';
+        $test_user->username =  'testexample';
         $test_user->password = bcrypt('12345');
-        $test_user->total = 0;;
         $test_user->total = 0;
 
         $test_user->save();

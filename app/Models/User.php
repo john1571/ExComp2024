@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Workout;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function workouts()
+    {
+        return $this->hasMany(Workout::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -19,9 +23,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
     ];
+
+    protected $attributes = array(
+        'total' => 0
+    );    
 
     /**
      * The attributes that should be hidden for serialization.
