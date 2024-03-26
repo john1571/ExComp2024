@@ -4,17 +4,23 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <head>
-    <title>ExComp2024 User</title>
+    <title>ExComp2024 Users</title>
 </head>
 
 
 <body>
     <nav>
-        <a href='/workout'>Workouts</a>
         <a href='/'>Home</a>
-        @guest
-            <a href="/register">Register</a>
-        @endguest
+        @auth
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Log out</button>
+            </form>
+            <a href='/workout'></a>
+        @else
+            <a href='/login'>Login</a>
+            <a href='/register'>Register</a>
+        @endauth
     </nav>
     
     @foreach($users as $user)

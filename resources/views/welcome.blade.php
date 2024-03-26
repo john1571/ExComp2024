@@ -11,11 +11,12 @@
                     @csrf
                     <button type="submit">Log out</button>
                 </form>
+                <a href='/user'>Your Workouts</a>
             @else
                 <a href="/register">Register</a>
                 <a href="/login">Log in</a>
             @endauth
-
+            <a href='/workout'>Workouts</a>
         </div>
     </nav>
 
