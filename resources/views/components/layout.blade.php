@@ -1,5 +1,7 @@
 <nav>
     <div>
-        <a href="/register">Register</a>
+        @guest
+            <a href="/register">Register</a>
+        @endguest
     </div>
 </nav>
