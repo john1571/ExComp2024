@@ -14,8 +14,8 @@ Route::get('/user', function() {
     return view('user', ['users' => User::all()]);
 });
 
-Route::get('/workout', [WorkoutController::class, 'show']);
-Route::get('/new_workout', [WorkoutController::class, 'new']);
+Route::get('workout', [WorkoutController::class, 'show']);
+Route::get('new_workout', [WorkoutController::class, 'new']);
 Route::post('workout', [WorkoutController::class, 'create']);
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
