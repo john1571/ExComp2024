@@ -11,12 +11,19 @@
             @endguest
         </div>
     </nav>
+    <table>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Points</th>
+        <th>User</th>
     @foreach($workouts as $workout)
-        <h3>Type: {{ $workout->type }}</h3>
-        <h3>Distance: {{ $workout->distance }}</h3>
-        <h3>Points: {{ $workout->points }}</h3>
-        <h3>Date: {{ $workout->date }}</h3>
-        <h3>User: <a href="\user">{{ $workout->user->name }}</a></h3>
-    @endforeach
+        <tr>
+            <td>{{ $workout->date }}</td>
+            <td>{{ $workout->type }}</td>
+            <td>{{ $workout->points }}</td>
+            <td><a href="\user">{{ $workout->user->name }}</a></td>
+        </tr>
+        @endforeach
+    </table>
 </body>
 </html>

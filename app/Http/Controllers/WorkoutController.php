@@ -10,7 +10,7 @@ class WorkoutController extends Controller
 {
     public function show()
     {
-        return view('workout', ['workouts' => Workout::All()]);
+        return view('workout', ['workouts' => auth()->user()->workouts]);
     }
 
     public function new()
@@ -22,7 +22,7 @@ class WorkoutController extends Controller
     {
         $request = request()->all();
         Workout::create([
-            'user_id' => 1,
+            'user_id' => auth()->user()->id,
             'type' => $request['type'],
             'distance' => $request['distance'],
             'points' => value($request['distance']),
@@ -32,6 +32,6 @@ class WorkoutController extends Controller
             'duration' => 0
         ]);
         
-        return view('workout', ['workouts' => Workout::all()]);
+        return view('workout', ['workouts' => auth()->user()->workouts]);
     }
 }
