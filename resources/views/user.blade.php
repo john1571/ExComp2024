@@ -9,6 +9,14 @@
 
 
 <body>
+    <nav>
+        <a href='/workout'>Workouts</a>
+        <a href='/'>Home</a>
+        @guest
+            <a href="/register">Register</a>
+        @endguest
+    </nav>
+    
     @foreach($users as $user)
     <h3>Name: {{ $user->name }}</h3>
     <h3>Username: {{ $user->username }}</h3>
@@ -17,16 +25,8 @@
     <h4>{{$workout->points}}<h4>
     @endforeach
     @endforeach
-    <a href='\workout'>Workouts</a>
 
-    @if (session()->has('success'))
-            <div x-data="{ show: true }"
-                x-init="setTimeout(() => show = false, 4000)"
-                x-show="show"
-            >
-                <p>{{ session('success') }}</p>
-            </div>
-    @endif
+    <x-flash />
 
 </body>
 </html>
