@@ -25,3 +25,5 @@ If you miss a day... then you don't get severely punished for breaking your stre
 from your multiplier and you can fix it the next day.
 If you miss 10 days... you get what you deserve. Now you will need to exercise 10 days in a row to 
 get your multiplier back to max.
+
+Created by John Paul and Joanie
