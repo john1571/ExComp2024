@@ -5,10 +5,18 @@
 </head>
 <body>
     <nav>
-        <div>
-            @guest
+        <div>                
+            @auth
+                <a>Hello {{ auth()->user()->name }}!</a>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">Log out</button>
+                </form>
+                <a href='/user'>Your Workouts</a>
+            @else
                 <a href="/register">Register</a>
-            @endguest
+                <a href="/login">Log in</a>
+            @endauth
         </div>
     </nav>
     <table>

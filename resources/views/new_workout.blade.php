@@ -1,6 +1,22 @@
 
 <!DOCTYPE html>
 <head>
+    <nav>
+        <div>                
+            @auth
+                <a>Hello {{ auth()->user()->name }}!</a>
+                <form method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">Log out</button>
+                </form>
+                <a href='/user'>All Users</a>
+            @else
+                <a href="/register">Register</a>
+                <a href="/login">Log in</a>
+            @endauth
+            <a href='/workout'>Your Workouts</a>
+        </div>
+    </nav>
     <title>ExComp2024 New Workout</title>
     <style>
         div:empty {

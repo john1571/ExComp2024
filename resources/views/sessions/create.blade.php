@@ -1,35 +1,14 @@
 <!DOCTYPE html>
-<head>
-    <title>ExComp2024 Register User</title>
-</head>
+
 <body>
     <nav>
-        <div>
-            <a href='/'>Home</a>        
-            @guest
-                <a href="/login">Log in</a>
-            @endguest
-            <a href='/workout'>Workouts</a>
-        </div>
+        <a href='/'>Home</a>
+        <a href='/workout'>Your Workouts</a>
+        <a href="/register">Register</a>
     </nav>
     <main>
-        <form method="POST" action="/register">
+        <form method="POST" action="/login">
             @csrf
-            <div>
-                <label for="name">
-                     Name
-                </label>
-                <input 
-                    type="text"
-                    name="name"
-                    id="name" 
-                    value="{{ old('name') }}"
-                    required
-                >
-                @error('name')
-                    <p>{{ $message }}</p>
-                @enderror
-            </div>
             <div>
                 <label for="username">
                      Username
@@ -67,4 +46,3 @@
         </form>
     </main>
 </body>
-</html>
