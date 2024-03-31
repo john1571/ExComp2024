@@ -65,7 +65,7 @@ function onSelect()
         distance.style.display = 'block';
         distanceLabel.style.display = 'block';
     }
-    else if (["pushups", "pullups", "situps", "squat"].indexOf(type.value)!= -1)
+    else if (["pushups", "pullups", "situps", "squats"].indexOf(type.value)!= -1)
     {
         reps.style.display = 'block';
         minutes.style.display = 'none';
