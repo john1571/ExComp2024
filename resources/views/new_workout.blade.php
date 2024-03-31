@@ -1,28 +1,44 @@
 
-<!DOCTYPE html>
-<head>
-    <nav>
-        <div>                
-            @auth
-                <a>Hello {{ auth()->user()->name }}!</a>
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit">Log out</button>
-                </form>
-                <a href='/user'>All Users</a>
-            @else
-                <a href="/register">Register</a>
-                <a href="/login">Log in</a>
-            @endauth
-            <a href='/workout'>Your Workouts</a>
-        </div>
-    </nav>
-    <title>ExComp2024 New Workout</title>
-    <style>
+<x-layout>
+    <form action="/workout" method="POST">
+    @csrf
+    <label id='typeLabel'>Type</label>
+    <select type="select" name="type" id="type" value="run" onchange="javascript:onSelect();">
+        <option value="run">Run</option>
+        <option value="walk">Walk</option>
+        <option value="bike">Bike</option>
+        <option value="swim">Swim</option>
+        <option value="pushups">Pushups</option>
+        <option value="pullups">Pullups</option>
+        <option value="squats">Squats</option>
+        <option value="situps">Situps</option>
+        <option value="workout">Workout</option>
+        <option value="sports/stretching">Sports/Stretching</option>
+    </select><br/><br/>
+    <div>
+        <label id='distanceLabel'>Miles</label>
+        <input type="number" class="distance" name="distance" id="distance" value="0">
+    </div>
+    <div>
+        <label id='repsLabel'>Reps</label>
+        <input type="number" class="reps" name="reps" id="reps" value="0">
+    </div>
+    <div>
+        <label id='minutesLabel'>Minutes</label>
+        <input type="number" class="minutes" name="minutes" id="minutes" value="0">
+    </div>
+    <br/>
+    <input type="submit" value="Create New"/>    
+    </form>
+
+</body>
+@push('scripts')
+<style>
         div:empty {
             display:none;
         }
-    </style>
+</style>
+
 <script type="text/javascript">
 var distance = document.getElementById("distance");
 var reps = document.getElementById("reps");
@@ -69,39 +85,6 @@ function onSelect()
     }
 }
 </script>
-</head>
-<body>
-    <form action="/workout" method="POST">
-    @csrf
-    <label id='typeLabel'>Type</label>
-    <select type="select" name="type" id="type" value="run" onchange="javascript:onSelect();">
-        <option value="run">Run</option>
-        <option value="walk">Walk</option>
-        <option value="bike">Bike</option>
-        <option value="swim">Swim</option>
-        <option value="pushups">Pushups</option>
-        <option value="pullups">Pullups</option>
-        <option value="squats">Squats</option>
-        <option value="situps">Situps</option>
-        <option value="workout">Workout</option>
-        <option value="sports/stretching">Sports/Stretching</option>
-    </select><br/><br/>
-    <div>
-        <label id='distanceLabel'>Miles</label>
-        <input type="number" class="distance" name="distance" id="distance" value="0">
-    </div>
-    <div>
-        <label id='repsLabel'>Reps</label>
-        <input type="number" class="reps" name="reps" id="reps" value="0">
-    </div>
-    <div>
-        <label id='minutesLabel'>Minutes</label>
-        <input type="number" class="minutes" name="minutes" id="minutes" value="0">
-    </div>
-    <br/>
-    <input type="submit" value="Create New"/>    
-    </form>
 
-</body>
-
-</html>
+@endpush
+</x-layout>
