@@ -85,7 +85,7 @@ class WorkoutController extends Controller
             'type' => $type,
             'distance' => $distance,
             'points' => $points,
-            'date' => Today()->year . '-0' . Today()->month . '-' . Today()->day -1,
+            'date' => Today()->year . '-0' . Today()->month . '-' . Today()->day, /*day had -1 here which made 4/1/2024 into 4/0/2024*/
             'reps' => $reps,
             'kids' => 0,
             'duration' => $time
