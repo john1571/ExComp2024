@@ -14,7 +14,7 @@
                 <button type="submit">Log out</button>
             </form>
             <a href='/user'>All Workouts</a>
-            <a href='/workout'>Your Workouts</a>
+            <a href='/workout'>My Workouts</a>
             <a href='/new_workout'>New Workout</a>
         @else
             <a href="/register">Register</a>
