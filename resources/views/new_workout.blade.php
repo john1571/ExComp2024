@@ -2,6 +2,14 @@
 <x-layout>
     <form action="/workout" method="POST">
     @csrf
+    
+    <label id='dateLabel'>Date</label>
+    <select type="select" name="date" id="date" value="{{$dates[0]}}">
+        @foreach($dates as $date)
+        <option value="{{$date}}">{{$date}}</option>
+        @endforeach
+    </select>
+    </br></br>
     <label id='typeLabel'>Type</label>
     <select type="select" name="type" id="type" value="run" onchange="javascript:onSelect();">
         <option value="run">Run</option>

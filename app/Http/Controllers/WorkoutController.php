@@ -15,7 +15,9 @@ class WorkoutController extends Controller
 
     public function new()
     {
-        return view('new_workout');
+        // Today and Yesterday
+        $dates = [date("Y-m-d", time() - (5*60*60)), date("Y-m-d", (time() - (5*60*60)) - (24*60*60))];
+        return view('new_workout', ['dates' => $dates]);
     }
 
     public function create()
@@ -105,7 +107,7 @@ class WorkoutController extends Controller
             'distance' => $distance,
             'points' => $points,
             'poolLengths' => $poolLengths,
-            'date' => Date("d-m-y", time() - (5*60*60)),
+            'date' => $request['date'],
             'reps' => $reps,
             'kids' => 0,
             'duration' => $time
