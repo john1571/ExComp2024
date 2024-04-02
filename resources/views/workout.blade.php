@@ -1,24 +1,4 @@
-
-<!DOCTYPE html>
-<head>
-    <title>ExComp2024 Workout</title>
-</head>
-<body>
-    <nav>
-        <div>                
-            @auth
-                <a>Hello {{ auth()->user()->name }}!</a>
-                <form method="POST" action="/logout">
-                    @csrf
-                    <button type="submit">Log out</button>
-                </form>
-                <a href='/user'>Your Workouts</a>
-            @else
-                <a href="/register">Register</a>
-                <a href="/login">Log in</a>
-            @endauth
-        </div>
-    </nav>
+<x-layout>
     <table>
         <th>Date</th>
         <th>Type</th>
@@ -33,5 +13,4 @@
         </tr>
         @endforeach
     </table>
-</body>
-</html>
+</x-layout>

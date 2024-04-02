@@ -13,8 +13,9 @@
                 @csrf
                 <button type="submit">Log out</button>
             </form>
-            <a href='/user'>Your Workouts</a>
+            <a href='/user'>All Workouts</a>
             <a href='/workout'>Your Workouts</a>
+            <a href='/new_workout'>New Workout</a>
         @else
             <a href="/register">Register</a>
             <a href="/login">Log in</a>
