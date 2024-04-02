@@ -22,8 +22,7 @@ class SessionsController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'username' => 'Your username was not found.',
-            'password' => 'Incorrect password.'
+            'username' => 'Your username or password is incorrect.'
         ]);
     }
 
