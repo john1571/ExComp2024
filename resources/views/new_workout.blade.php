@@ -1,4 +1,3 @@
-
 <x-layout>
     <form action="/workout" method="POST">
     @csrf
@@ -31,7 +30,6 @@
     <input type="submit" value="Create New"/>    
     </form>
 
-</body>
 @push('scripts')
 <style>
         div:empty {
