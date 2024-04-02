@@ -23,33 +23,47 @@ class WorkoutController extends Controller
         $request = request()->all();
 
         $type = $request['type'];
-        $distance = 0;
-        $reps = 0;
-        $time = 0;
         $kids = 0;
         $points = 0;
-
-        /* 
+        
+        /*
         "run"
         "walk"
         "bike"
-        "swim"
+        */
+        $distance = 0;
+        
+        
+        // "swim"
+        $poolLengths = 0;
+        
+        /*
         "pushups"
         "pullups"
         "squats"
         "situps"
+        */
+        $reps = 0;
+        
+        /*
         "workout"
         "sports/stretching"
         */
+        $time = 0;
 
         if (in_array($type, ["run", "walk", "bike"] ))
         {
             $distance = value($request['distance']);
+            $kids = value($request['kids']);
+
             $points = 0;
             if ($type == "bike")
                 $points = $distance * 4;
             else
                 $points = $distance * 10;
+
+            if ($kids > 0)
+                $points += $distance * $kids * 2;
         }
         else if (in_array($type, ["pushups", "pullups", "squats", "situps"]))
         {
@@ -60,6 +74,11 @@ class WorkoutController extends Controller
                 $points = $reps / 10;
             
             
+        }
+        else if ($type == "swim")
+        {
+            $poolLengths = value($request['poolLengths']);
+            $points = $poolLengths * 2;
         }
         else if (in_array($type, ['workout', 'sports/stretching']))
         {
@@ -85,7 +104,8 @@ class WorkoutController extends Controller
             'type' => $type,
             'distance' => $distance,
             'points' => $points,
-            'date' => Today()->year . '-0' . Today()->month . '-' . Today()->day, /*day had -1 here which made 4/1/2024 into 4/0/2024*/
+            'poolLengths' => $poolLengths,
+            'date' => Date("d-m-y", time() - (5*60*60)),
             'reps' => $reps,
             'kids' => 0,
             'duration' => $time

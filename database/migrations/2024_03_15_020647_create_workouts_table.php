@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('reps');
             $table->float('distance');
             $table->float('duration');
+            $table->float('poolLengths');
             $table->integer('kids');
             $table->float('points');
             $table->date('date');

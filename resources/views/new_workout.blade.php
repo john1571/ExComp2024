@@ -26,7 +26,16 @@
         <label id='minutesLabel'>Minutes</label>
         <input type="number" class="minutes" name="minutes" id="minutes" value="0">
     </div>
+    <div>
+        <label id='poolLengthsLabel'>Pool Lengths</label>
+        <input type="number" class="poolLengths" name="poolLengths" id="poolLengths" value="0">
+    </div>
     <br/>
+    <div>
+        <label id="kidsLabel">Number of Accompanying Children</label>
+        <input type="number" class="kids" name="kids" id="kids" value="0">
+    </div>
+    </br>
     <input type="submit" value="Create New"/>    
     </form>
 
@@ -38,10 +47,7 @@
 </style>
 
 <script type="text/javascript">
-var distance = document.getElementById("distance");
-var reps = document.getElementById("reps");
-var minutes = document.getElementById("minutes");
-var type = document.getElementById('type');
+
 window.onload = function() {
     onSelect(); 
 }
@@ -50,36 +56,48 @@ function onSelect()
     var distance = document.getElementById("distance");
     var reps = document.getElementById("reps");
     var minutes = document.getElementById("minutes");
+    var poolLengths = document.getElementById("poolLengths");
     var distanceLabel = document.getElementById("distanceLabel");
     var repsLabel = document.getElementById("repsLabel");
     var minutesLabel = document.getElementById("minutesLabel");
+    var poolLengthsLabel = document.getElementById("poolLengthsLabel");
+    var kids = document.getElementById("kids");
+    var kidsLabel = document.getElementById("kidsLabel");
     var type = document.getElementById('type');  
-    if (["run", "walk", "bike", "swim"].indexOf(type.value)!= -1)
+
+    reps.style.display = 'none';
+    minutes.style.display = 'none';
+    repsLabel.style.display = 'none';
+    minutesLabel.style.display = 'none';
+    distance.style.display = 'none';
+    distanceLabel.style.display = 'none';
+    poolLengths.style.display = 'none';
+    poolLengthsLabel.style.display = 'none';
+    kids.style.display = 'none';
+    kidsLabel.style.display = 'none';
+
+    if (["run", "walk", "bike"].indexOf(type.value)!= -1)
     {
-        reps.style.display = 'none';
-        minutes.style.display = 'none';
-        repsLabel.style.display = 'none';
-        minutesLabel.style.display = 'none';
+
         distance.style.display = 'block';
         distanceLabel.style.display = 'block';
+        kids.style.display = "block";
+        kidsLabel.style.display = "block";
     }
     else if (["pushups", "pullups", "situps", "squats"].indexOf(type.value)!= -1)
     {
         reps.style.display = 'block';
-        minutes.style.display = 'none';
         repsLabel.style.display = 'block';
-        minutesLabel.style.display = 'none';
-        distance.style.display = 'none';
-        distanceLabel.style.display = 'none';
     } 
+    else if (type.value == "swim")
+    {
+        poolLengths.style.display = "block";
+        poolLengthsLabel.style.display = "block";
+    }
     else
     {
-        reps.style.display = 'none';
         minutes.style.display = 'block';
-        repsLabel.style.display = 'none';
         minutesLabel.style.display = 'block';
-        distance.style.display = 'none';
-        distanceLabel.style.display = 'none';
     }
 }
 </script>
