@@ -54,11 +54,16 @@ class WorkoutController extends Controller
         if (in_array($type, ["run", "walk", "bike"] ))
         {
             $distance = value($request['distance']);
+            $kids = value($request['kids']);
+
             $points = 0;
             if ($type == "bike")
                 $points = $distance * 4;
             else
                 $points = $distance * 10;
+
+            if ($kids > 0)
+                $points += $distance * $kids * 2;
         }
         else if (in_array($type, ["pushups", "pullups", "squats", "situps"]))
         {

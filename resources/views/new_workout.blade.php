@@ -32,6 +32,11 @@
         <input type="number" class="poolLengths" name="poolLengths" id="poolLengths" value="0">
     </div>
     <br/>
+    <div>
+        <label id="kidsLabel">Number of Accompanying Children</label>
+        <input type="number" class="kids" name="kids" id="kids" value="0">
+    </div>
+    </br>
     <input type="submit" value="Create New"/>    
     </form>
 
@@ -58,6 +63,8 @@ function onSelect()
     var repsLabel = document.getElementById("repsLabel");
     var minutesLabel = document.getElementById("minutesLabel");
     var poolLengthsLabel = document.getElementById("poolLengthsLabel");
+    var kids = document.getElementById("kids");
+    var kidsLabel = document.getElementById("kidsLabel");
     var type = document.getElementById('type');  
 
     reps.style.display = 'none';
@@ -68,12 +75,16 @@ function onSelect()
     distanceLabel.style.display = 'none';
     poolLengths.style.display = 'none';
     poolLengthsLabel.style.display = 'none';
+    kids.style.display = 'none';
+    kidsLabel.style.display = 'none';
 
     if (["run", "walk", "bike"].indexOf(type.value)!= -1)
     {
 
         distance.style.display = 'block';
         distanceLabel.style.display = 'block';
+        kids.style.display = "block";
+        kidsLabel.style.display = "block";
     }
     else if (["pushups", "pullups", "situps", "squats"].indexOf(type.value)!= -1)
     {
