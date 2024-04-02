@@ -23,24 +23,33 @@ class WorkoutController extends Controller
         $request = request()->all();
 
         $type = $request['type'];
-        $distance = 0;
-        $reps = 0;
-        $time = 0;
         $kids = 0;
         $points = 0;
-
-        /* 
+        
+        /*
         "run"
         "walk"
         "bike"
-        "swim"
+        */
+        $distance = 0;
+        
+        
+        // "swim"
+        $poolLengths = 0;
+        
+        /*
         "pushups"
         "pullups"
         "squats"
         "situps"
+        */
+        $reps = 0;
+        
+        /*
         "workout"
         "sports/stretching"
         */
+        $time = 0;
 
         if (in_array($type, ["run", "walk", "bike"] ))
         {
@@ -60,6 +69,11 @@ class WorkoutController extends Controller
                 $points = $reps / 10;
             
             
+        }
+        else if ($type == "swim")
+        {
+            $poolLengths = value($request['poolLengths']);
+            $points = $poolLengths * 2;
         }
         else if (in_array($type, ['workout', 'sports/stretching']))
         {
@@ -85,6 +99,7 @@ class WorkoutController extends Controller
             'type' => $type,
             'distance' => $distance,
             'points' => $points,
+            'poolLengths' => $poolLengths,
             'date' => Today()->year . '-0' . Today()->month . '-' . Today()->day -1,
             'reps' => $reps,
             'kids' => 0,

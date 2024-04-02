@@ -20,6 +20,7 @@ class Workout extends Model
         'reps',
         'distance',
         'duration',
+        'poolLengths',
         'kids',
         'points',
         'date'
